@@ -1,2 +1,2 @@
-# hks_pyerror
-The module defines some popular errors of hks python ecosystems.
+# hkserror
+The module defines some popular errors of hks python modulesystems.
