@@ -1,5 +1,3 @@
-import traceback
-
 from hkserror import HTypeError, HKSError
 
 def test_htypeerror():

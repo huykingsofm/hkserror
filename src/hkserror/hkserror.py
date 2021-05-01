@@ -44,5 +44,3 @@ class HTypeError(TypeError, HKSError):
 
 class HFormatError(HKSError):
     "The exception is raised when a variable/function/.. has wrong format."
-
-
