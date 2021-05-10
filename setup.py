@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="hkserror",
-    version="0.0.1",
+    version="0.0.2",
     author="huykingsofm",
     author_email="huykingsofm@gmail.com",
     description="The module defines some popular errors of hks python modulesystems.",

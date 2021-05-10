@@ -4,16 +4,17 @@ import traceback
 
 class HKSError(Exception):
     "The exception is raised by failures in the hks python modulesystem."
-    def __init__(self, *args: object) -> None:
-        super().__init__(*args)
-    
     def __str__(self):
         e = super().__str__()
 
         tb = traceback.format_exception(etype=type(self), value=super(), tb=self.__traceback__)
 
-        pattern = r"(^\s+)"
-        tb = re.sub(pattern, "", tb[-2].split("\n")[0])
+        for i, line in enumerate(tb):
+            tb[i] = re.sub(r"^(\s+)", "", line)
+            tb[i] = re.sub(r"(\s+)", " ", tb[i])
+
+        #print(tb)
+        tb = " |=======| ".join(tb[1:-1])
 
         e_with_tb = "{} ({}).".format(e, tb)
 
@@ -27,6 +28,7 @@ class HTypeError(TypeError, HKSError):
     "The exception is raised when a variable/object/... has wrong type."
     def __init__(self, obj_name: str, obj: object, *args) -> None:
         notification = "The parameter {} expected".format(obj_name)
+
         for i, arg in enumerate(args):
             if i > 0:
                 notification += " or"

@@ -1,11 +1,19 @@
 from hkserror import HTypeError, HKSError
+import hkserror
+
+def test_version():
+    assert hkserror.__version__ == "0.0.2"
+
+def error():
+    a = 7
+    raise HTypeError("A", a, float)
 
 def test_htypeerror():
     a = 5
     try:
-        raise HTypeError("a", a, float, None)
+        error()
     except HKSError as e:
-        print(e)
+        print(str(e))
 
 
 def test_hkserror():
@@ -16,4 +24,4 @@ def test_hkserror():
 
 
 if __name__ == "__main__":
-    test_hkserror()
+    test_htypeerror()
